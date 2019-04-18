@@ -1,22 +1,17 @@
 package com.company;
 
 import java.io.*;
+import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class MyContainer implements Iterable<String>, Serializable {
-    private String[] data;
+    public String[] data = new String[0];
     private int CurrentLength = 0;
 
-    MyContainer(int length) {
-        if (length > 0) {
-            data = new String[length];
-        }
-        else
-            throw new ExceptionInInitializerError();
-    }
-
     public void add(String s) {
-        data[CurrentLength++] = s;
+        data = Arrays.copyOf(data, data.length +1);
+        data[data.length-1] = s;
     }
 
     String get(int index) {
@@ -47,16 +42,27 @@ public class MyContainer implements Iterable<String>, Serializable {
         CurrentLength = 0;
     }
 
-    boolean remove(String string) {
-        for (int i = 0; i < CurrentLength; i++) {
-            if (string.equals(data[i])) {
-                CurrentLength--;
-                if (CurrentLength - i >= 0) System.arraycopy(data, i + 1, data, i, CurrentLength - i);
-                data[CurrentLength] = null;
-                return true;
+    boolean remove(String str) {
+        boolean removed = false;
+        int j = 0;
+        if (str != null) {
+            String[] buffer = new String[data.length - 1];
+            for (int i = 0; i < data.length; i++) {
+                if (data[i].equals(str)) {
+                    removed = true;
+                    continue;
+                } else {
+                    buffer[j] = data[i];
+                    if (j != data.length - 1)
+                        j++;
+                    continue;
+                }
             }
-        }
-        return false;
+            data = new String[0];
+            data = buffer;
+        } else
+            System.out.println("no such string");
+        return removed;
     }
 
     int size() {

@@ -1,76 +1,37 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("hi!");
-        ArrayList<MyContainer> ContainerList = new ArrayList<>();
+        System.out.println("Hello, stranger!");
+        MyContainer Container = new MyContainer();
         byte command;
         while (true) {
             System.out.println("Enter command: ");
-            System.out.println("1 - Make container");
-            System.out.println("2 - Fill container");
-            System.out.println("3 - Clear container");
-            System.out.println("4 - Show container");
-            System.out.println("5 - Containers' list");
-            System.out.println("6 - Container menu");
-            System.out.println("7 - Exit");
+            System.out.println("1 - Make&Fill container");
+            System.out.println("2 - Clear container");
+            System.out.println("3 - Show container");
+            System.out.println("4 - Container menu");
+            System.out.println("5 - Exit");
             command = in.nextByte();
             switch (command) {
                 case 1:
-                    System.out.print("Enter container's max length: ");
-                    ContainerList.add(new MyContainer(in.nextInt()));
-                    System.out.println("Success! Your container's size is [" + ContainerList.size() + "]");
+                    System.out.println("Enter string:");
+                    in.nextLine();
+                    Container.add(in.nextLine());
                     break;
                 case 2:
-                    System.out.print("Enter container's index: ");
-                    int index = in.nextInt();
-                    if (index > ContainerList.size() || index < 0) {
-                        System.out.println("Error! Index not found");
-                        break;
-                    }
-                    System.out.println("Enter " + ContainerList.get(index-1).maxSize() + " strings one by one:");
-                    in.nextLine();
-                    for (int i = 0, n = ContainerList.get(index-1).maxSize(); i < n; i++) {
-                        ContainerList.get(index-1).add(in.nextLine());
-                    }
-                    break;
-                case 3:
-                    System.out.print("Enter container's index: ");
-                    int DeleteIndex = in.nextInt();
-                    if (DeleteIndex > ContainerList.size() || DeleteIndex < 1) {
-                        System.out.println("Error! Index not found");
-                        break;
-                    }
-                    ContainerList.get(DeleteIndex-1).clear();
+                    Container.clear();
                     System.out.println("Well done!");
                     break;
+                case 3:
+                    for(String s: Container.data)
+                        System.out.println(s);
+                    break;
                 case 4:
-                    System.out.print("Enter container's index: ");
-                    int ToShowIndex = in.nextInt();
-                    if (ToShowIndex > ContainerList.size() || ToShowIndex < 1) {
-                        System.out.println("Error! Index not found");
-                        break;
-                    }
-                    System.out.println(ContainerList.get(ToShowIndex-1).toString());
-                    break;
-                case 5:
-                    for (int i = 0; i < ContainerList.size(); i++) {
-                        System.out.println("[" + (i+1) + "] - data: [" + ContainerList.get(i).size() +
-                                "/" + ContainerList.get(i).maxSize() + "]");
-                    }
-                    break;
-                case 6:
-                    System.out.print("Enter container's index: ");
-                    int MenuIndex = in.nextInt();
-                    if (MenuIndex > ContainerList.size() || MenuIndex < 1) {
-                        System.out.println("Error! not found");
-                        break;
-                    }
                     System.out.println("Next command, sir! ");
                     System.out.println("1 - Add element");
                     System.out.println("2 - Remove element");
@@ -92,71 +53,69 @@ public class Main {
                         case 1:
                             System.out.println("Enter element:");
                             in.nextLine();
-                            ContainerList.get(MenuIndex-1).add(in.nextLine());
+                            Container.add(in.nextLine());
                             break;
                         case 2:
                             System.out.println("Enter element:");
                             in.nextLine();
-                            ContainerList.get(MenuIndex-1).remove(in.nextLine());
+                            Container.remove(in.nextLine());
                             break;
                         case 3:
-                            for (String i : ContainerList.get(MenuIndex-1).toArray())
+                            for (String i : Container.toArray())
                             {
                                 System.out.println(i);
                             }
                             break;
                         case 4:
-                            System.out.println(ContainerList.get(MenuIndex-1).size());
+                            System.out.println(Container.size());
                             break;
                         case 5:
-                            System.out.println(ContainerList.get(MenuIndex-1).maxSize());
+                            System.out.println(Container.maxSize());
                             break;
                         case 6:
                             System.out.println("Enter string to check if it exist in container:");
                             in.nextLine();
-                            System.out.println(ContainerList.get(MenuIndex-1).contains(in.nextLine()));
+                            System.out.println(Container.contains(in.nextLine()));
                             break;
                         case 7:
                             System.out.print("Enter index: ");
                             int SubContainerIndex = in.nextInt();
-                            if (SubContainerIndex > ContainerList.size() || SubContainerIndex < 1) {
+                            if (SubContainerIndex > Container.size() || SubContainerIndex < 1) {
                                 System.out.println("Error! Index not found");
                                 break;
                             }
-                            System.out.println("[" + SubContainerIndex + "] is sub container of [" + MenuIndex +
-                                    "] - " + ContainerList.get(MenuIndex-1).containsAll(ContainerList
-                                    .get(SubContainerIndex-1)));
+                            System.out.println("[" + SubContainerIndex + "] is sub container " + Container.containsAll(Container));
                             break;
                         case 8:
                             System.out.println("Enter file name(name.format): ");
                             in.nextLine();
-                            ContainerList.get(MenuIndex-1).serialize(in.nextLine());
+                            Container.serialize(in.nextLine());
                             break;
                         case 9:
                             System.out.println("Enter file name(name.format): ");
                             in.nextLine();
-                            ContainerList.get(MenuIndex-1).deserialize(in.nextLine());
+                            Container.deserialize(in.nextLine());
                             break;
                         case 10:
                             System.out.print("Enter index: ");
-                            ContainerList.get(MenuIndex-1).get(in.nextInt());
+                            Container.get(in.nextInt());
                             break;
                         case 11:
                             System.out.println("Enter element:");
                             in.nextLine();
-                            ContainerList.get(MenuIndex-1).indexOf(in.nextLine());
+                            Container.indexOf(in.nextLine());
                             break;
                         case 12:
-                            ContainerList.get(MenuIndex-1).sort();
+                            Container.sort();
                             System.out.println("Well done!");
                             break;
                         case 13:
-                            for (String i : ContainerList.get(MenuIndex-1)) {
+                            for (String i : Container) {
                                 System.out.println(i);
                             }
                             break;
                         case 14:
-                            MyIterator i = (MyIterator) ContainerList.get(MenuIndex-1).iterator();
+                            MyIterator i = (MyIterator) Container.iterator();
                             while (i.hasNext()) {
                                 System.out.println(i.next());
                             }
@@ -167,12 +126,13 @@ public class Main {
                             System.out.println("Command not found!");
                     }
                     break;
-                case 7:
-                    System.out.println("Go on your own way, stalker");
+                case 5:
+                    System.out.println("Go on your own way, stranger");
                     System.exit(0);
                 default:
                     System.out.println("Command not found");
             }
+
         }
     }
 }
