@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.2" class="java.beans.XMLDecoder">
+ <object class="com.company.Bureau">
+  <void property="date">
+   <string>01.02.2001</string>
+  </void>
+  <void property="info">
+   <object class="com.company.Info">
+    <void property="dateofbirth">
+     <string>01.02.2001</string>
+    </void>
+    <void property="eyecolor">
+     <string>blue</string>
+    </void>
+    <void property="height">
+     <string>175</string>
+    </void>
+    <void property="hobby">
+     <string>sport</string>
+    </void>
+    <void property="name">
+     <string>Max</string>
+    </void>
+   </object>
+  </void>
+  <void property="number">
+   <string>6816</string>
+  </void>
+  <void property="requirement">
+   <string>humor</string>
+  </void>
+  <void property="sex">
+   <string>Male</string>
+  </void>
+ </object>
+</java>

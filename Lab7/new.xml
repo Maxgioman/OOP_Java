@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="com.company.Bureau">
+    <void property="date">
+     <string>ahjedvkl
+</string>
+    </void>
+    <void property="info">
+     <object class="com.company.Info"/>
+    </void>
+    <void property="number">
+     <string>12
+</string>
+    </void>
+    <void property="requirement">
+     <array class="java.lang.String" length="0"/>
+    </void>
+    <void property="sex">
+     <string>man
+</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.company.Bureau">
+    <void property="date">
+     <string>kkehcldc
+</string>
+    </void>
+    <void property="info">
+     <object class="com.company.Info"/>
+    </void>
+    <void property="number">
+     <string>22
+</string>
+    </void>
+    <void property="requirement">
+     <array class="java.lang.String" length="0"/>
+    </void>
+    <void property="sex">
+     <string>mam
+</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
