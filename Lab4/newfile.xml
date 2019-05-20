@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.2" class="java.beans.XMLDecoder">
+ <object class="com.company.Bureau">
+  <void property="date">
+   <string>17.04.2019
+</string>
+  </void>
+  <void property="info">
+   <object class="com.company.Info">
+    <void property="dateofbirth">
+     <string>01.09.2001
+</string>
+    </void>
+    <void property="eyecolor">
+     <string>blue
+</string>
+    </void>
+    <void property="height">
+     <string>175
+</string>
+    </void>
+    <void property="hobby">
+     <array class="java.lang.String" length="3">
+      <void index="0">
+       <string>Computer Games</string>
+      </void>
+      <void index="1">
+       <string>Football</string>
+      </void>
+      <void index="2">
+       <string>Sport</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Max
+</string>
+    </void>
+   </object>
+  </void>
+  <void property="number">
+   <string>142456
+</string>
+  </void>
+  <void property="requirement">
+   <array class="java.lang.String" length="3">
+    <void index="0">
+     <string>Female</string>
+    </void>
+    <void index="1">
+     <string>160+ height</string>
+    </void>
+    <void index="2">
+     <string>Ukraine</string>
+    </void>
+   </array>
+  </void>
+  <void property="sex">
+   <string>Male
+</string>
+  </void>
+ </object>
+</java>
